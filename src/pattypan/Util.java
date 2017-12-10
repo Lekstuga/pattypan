@@ -126,11 +126,22 @@ public final class Util {
   private final static ArrayList<String> allowedExtentionImage = new ArrayList<>(
           Arrays.asList("djvu", "flac", "gif", "jpg", "jpeg", "mid",
                   "oga", "ogg","ogv", "opus", "pdf", "png", "svg", "tiff",
-                  "tif", "wav", "webm", "webp", "xcf")
+                  "tif", "wav", "webm", "webp", "xcf", "mp4")
+  );
+
+  // https://commons.wikimedia.org/wiki/MediaWiki:Filename-prefix-blacklist
+  private final static ArrayList<String> filenamePrefixBlacklist = new ArrayList<>(
+          Arrays.asList("CIMG", "DSC_", "DSCF", "DSCN", "DUW", "GEDC",
+                  "IMG", "JD", "MGP", "PICT", "Imagen", "FOTO", "DSC",
+                  "SANY", "SAM")
   );
 
   public static boolean stringHasValidFileExtension(String string) {
     return allowedExtentionImage.parallelStream().anyMatch(string::endsWith);
+  }
+
+  public static boolean isPossibleBadFilename(String name) {
+    return filenamePrefixBlacklist.parallelStream().anyMatch(name::startsWith);
   }
 
   public static String getNameFromFilename(String filename) {
