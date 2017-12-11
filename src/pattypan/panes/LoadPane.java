@@ -172,7 +172,9 @@ public class LoadPane extends WikiPane {
           }
         }
 
-        //#TODO
+        if (Util.isPossibleBadFilename(description.get("name"))) {
+          warnings.add(description.get("name") + ": filename shouldn't have name from camera (DSC, DSCF etc");
+        }
 
         Set<String> keys = Util.getKeysByValue(description, "");
         if (keys.size() > 0) {
