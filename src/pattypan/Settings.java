@@ -34,7 +34,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public final class Settings {
 
@@ -392,15 +391,15 @@ public final class Settings {
       });
 
     } catch (FileNotFoundException ex) {
-      Logger.getLogger(Settings.class.getName()).log(Level.INFO, "Settings file not found, use default");
+      Session.LOGGER.log(Level.INFO, "Settings file not found, use default");
     } catch (IOException ex) {
-      Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+      Session.LOGGER.log(Level.SEVERE, null, ex);
     } finally {
       if (input != null) {
         try {
           input.close();
         } catch (IOException ex) {
-          Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+          Session.LOGGER.log(Level.SEVERE, null, ex);
         }
       }
     }
@@ -422,13 +421,13 @@ public final class Settings {
       });
       prop.store(output, null);
     } catch (IOException ex) {
-      Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+      Session.LOGGER.log(Level.SEVERE, null, ex);
     } finally {
       if (output != null) {
         try {
           output.close();
         } catch (IOException ex) {
-          Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+          Session.LOGGER.log(Level.SEVERE, null, ex);
         }
       }
     }

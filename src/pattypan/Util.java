@@ -46,7 +46,6 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.geometry.HPos;
 import javafx.scene.layout.ColumnConstraints;
@@ -91,9 +90,9 @@ public final class Util {
         new BrowserLauncher().openURLinBrowser(url);
       }
     } catch (BrowserLaunchingInitializingException | UnsupportedOperatingSystemException ex) {
-      Logger.getLogger(Util.class.getName()).log(Level.WARNING, null, ex);
+      Session.LOGGER.log(Level.WARNING, null, ex);
     } catch (URISyntaxException | IOException ex) {
-      Logger.getLogger(Util.class.getName()).log(Level.WARNING, null, ex);
+      Session.LOGGER.log(Level.WARNING, null, ex);
     }
   }
 
